@@ -14,15 +14,15 @@ import { perfumes } from '../data/perfumes.js'
 const styles = {
   container: {
     fontFamily: "'Poppins', sans-serif",
-    background: '#fdfbf7',
+    background: '#FFFFFF',
     minHeight: '100vh',
     color: '#1a1a1a',
   },
   hero: {
     textAlign: 'center',
     padding: '60px 24px 40px',
-    background: 'linear-gradient(135deg, #eaf4ec 0%, #faf5ec 100%)',
-    borderBottom: '1px solid rgba(74, 124, 89, 0.1)',
+    background: '#E8C5C8',
+    borderBottom: '1px solid rgba(94,43,114,0.15)',
   },
   heroTitle: {
     fontSize: '38px',
@@ -32,7 +32,7 @@ const styles = {
     letterSpacing: '-0.5px',
   },
   heroAccent: {
-    color: '#4a7c59',
+    color: '#5E2B72',
   },
   heroSub: {
     fontSize: '16px',
@@ -102,8 +102,8 @@ const styles = {
     transition: 'all 0.2s',
   },
   filterBtnActive: {
-    background: '#4a7c59',
-    border: '1px solid #4a7c59',
+    background: '#5E2B72',
+    border: '1px solid #5E2B72',
     padding: '8px 18px',
     borderRadius: '20px',
     fontSize: '13px',
@@ -111,7 +111,7 @@ const styles = {
     color: 'white',
     cursor: 'pointer',
     fontFamily: "'Poppins', sans-serif",
-    boxShadow: '0 2px 8px rgba(74, 124, 89, 0.25)',
+    boxShadow: '0 2px 8px rgba(94,43,114,0.25)',
   },
   grid: {
     display: 'grid',
@@ -124,14 +124,14 @@ const styles = {
     color: '#777',
   },
   deliveryNotice: {
-    background: '#eaf4ec',
+    background: '#E8C5C8',
     borderRadius: '12px',
     padding: '12px 20px',
     marginBottom: '28px',
     display: 'flex',
     alignItems: 'center',
     gap: '12px',
-    color: '#2e563b',
+    color: '#5E2B72',
     fontSize: '13px',
     fontWeight: 500,
   },

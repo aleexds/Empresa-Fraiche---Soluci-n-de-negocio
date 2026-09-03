@@ -3,7 +3,7 @@ import { useState } from 'react'
 const styles = {
   card: {
     background: 'white',
-    borderRadius: '16px',
+    borderRadius: '4px',
     overflow: 'hidden',
     boxShadow: '0 4px 24px rgba(0,0,0,0.06)',
     transition: 'all 0.3s ease',
@@ -13,8 +13,8 @@ const styles = {
     position: 'absolute',
     top: '12px',
     left: '12px',
-    background: 'linear-gradient(135deg, #c9a96e, #b8924a)',
-    color: 'white',
+    background: '#D4AF37',
+    color: '#222222',
     padding: '4px 14px',
     borderRadius: '50px',
     fontSize: '11px',
@@ -26,8 +26,9 @@ const styles = {
   },
   img: {
     width: '100%',
-    height: '280px',
-    objectFit: 'cover',
+    height: '300px',
+    objectFit: 'contain',
+    background: '#ffffff',
     display: 'block',
   },
   body: {
@@ -36,7 +37,7 @@ const styles = {
   category: {
     fontSize: '11px',
     fontWeight: 600,
-    color: '#c9a96e',
+    color: '#5E2B72',
     textTransform: 'uppercase',
     letterSpacing: '1px',
     marginBottom: '6px',
@@ -45,7 +46,7 @@ const styles = {
   name: {
     fontSize: '20px',
     fontWeight: 700,
-    color: '#1a1a1a',
+    color: '#222222',
     marginBottom: '8px',
     fontFamily: "'Poppins', sans-serif",
     lineHeight: 1.3,
@@ -69,7 +70,7 @@ const styles = {
   price: {
     fontSize: '24px',
     fontWeight: 700,
-    color: '#4a7c59',
+    color: '#5E2B72',
     fontFamily: "'Poppins', sans-serif",
   },
   priceLabel: {
@@ -78,8 +79,8 @@ const styles = {
     fontFamily: "'Poppins', sans-serif",
   },
   btn: {
-    background: '#4a7c59',
-    color: 'white',
+    background: '#D4AF37',
+    color: '#222222',
     border: 'none',
     borderRadius: '12px',
     padding: '12px 24px',
@@ -90,7 +91,7 @@ const styles = {
     transition: 'all 0.2s',
   },
   btnAdded: {
-    background: '#2e563b',
+    background: '#5E2B72',
     color: '#fff',
     border: 'none',
     borderRadius: '12px',
@@ -162,13 +163,13 @@ export default function ProductCard({
             onClick={handleAdd}
             onMouseEnter={(e) => {
               if (!justAdded) {
-                e.target.style.background = '#3d6b4c'
+                e.target.style.background = '#b89420'
                 e.target.style.transform = 'scale(1.05)'
               }
             }}
             onMouseLeave={(e) => {
               if (!justAdded) {
-                e.target.style.background = '#4a7c59'
+                e.target.style.background = '#D4AF37'
                 e.target.style.transform = 'scale(1)'
               }
             }}

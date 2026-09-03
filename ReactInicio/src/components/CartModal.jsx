@@ -56,7 +56,7 @@ const styles = {
     color: '#1a1a1a',
   },
   badge: {
-    background: '#4a7c59',
+    background: '#5E2B72',
     color: 'white',
     fontSize: '12px',
     fontWeight: 600,
@@ -94,7 +94,7 @@ const styles = {
   },
   emptyIcon: {
     fontSize: '48px',
-    color: '#c9a96e',
+    color: '#D4AF37',
     marginBottom: '8px',
   },
   emptyText: {
@@ -110,7 +110,7 @@ const styles = {
   },
   exploreBtn: {
     marginTop: '16px',
-    background: '#4a7c59',
+    background: '#5E2B72',
     color: 'white',
     border: 'none',
     padding: '10px 20px',
@@ -139,7 +139,7 @@ const styles = {
   },
   itemCategory: {
     fontSize: '10px',
-    color: '#c9a96e',
+    color: '#D4AF37',
     fontWeight: 600,
     textTransform: 'uppercase',
   },
@@ -152,7 +152,7 @@ const styles = {
   itemPrice: {
     fontSize: '14px',
     fontWeight: 700,
-    color: '#4a7c59',
+    color: '#5E2B72',
   },
   qtyContainer: {
     display: 'flex',
@@ -215,11 +215,11 @@ const styles = {
     borderTop: '1px dashed #e0ded8',
   },
   totalPrice: {
-    color: '#4a7c59',
+    color: '#5E2B72',
     fontSize: '22px',
   },
   checkoutBtn: {
-    background: '#4a7c59',
+    background: '#D4AF37',
     color: 'white',
     border: 'none',
     padding: '14px',
@@ -368,10 +368,10 @@ export default function CartModal({
             </div>
             <div style={styles.summaryRow}>
               <span>
-                <FontAwesomeIcon icon={faTruckFast} style={{ marginRight: '6px', color: '#4a7c59' }} />
+                <FontAwesomeIcon icon={faTruckFast} style={{ marginRight: '6px', color: '#5E2B72' }} />
                 Envíos únicamente en Costa Rica ({userProfile?.provincia || 'Costa Rica'})
               </span>
-              <span style={{ color: '#4a7c59', fontWeight: 600 }}>Gratis</span>
+              <span style={{ color: '#5E2B72', fontWeight: 600 }}>Gratis</span>
             </div>
             <div style={styles.totalRow}>
               <span>Total</span>
@@ -384,8 +384,8 @@ export default function CartModal({
             <button
               style={styles.checkoutBtn}
               onClick={handleCheckout}
-              onMouseEnter={(e) => (e.target.style.background = '#3d6b4c')}
-              onMouseLeave={(e) => (e.target.style.background = '#4a7c59')}
+              onMouseEnter={(e) => (e.target.style.background = '#b89420')}
+              onMouseLeave={(e) => (e.target.style.background = '#D4AF37')}
             >
               Finalizar Pedido
             </button>

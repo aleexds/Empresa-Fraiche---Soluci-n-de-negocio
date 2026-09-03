@@ -1,7 +1,7 @@
 
 const styles = {
   footer: {
-    background: '#1a1a1a',
+    background: '#5E2B72',
     color: 'rgba(255,255,255,0.6)',
     textAlign: 'center',
     padding: '32px 24px',
@@ -9,7 +9,7 @@ const styles = {
     fontFamily: "'Poppins', sans-serif",
   },
   footerBrand: {
-    color: '#c9a96e',
+    color: '#D4AF37',
   },
 }
 
@@ -21,4 +21,4 @@ export default function Footer() {
       </p>
     </footer>
   )
-}
+}

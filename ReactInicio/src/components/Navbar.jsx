@@ -6,10 +6,10 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '16px 48px',
-    background: 'rgba(255, 255, 255, 0.92)',
+    padding: '14px clamp(18px, 5vw, 64px)',
+    background: '#5E2B72',
     backdropFilter: 'blur(12px)',
-    borderBottom: '1px solid rgba(0,0,0,0.06)',
+    borderBottom: '1px solid rgba(255,255,255,0.18)',
     position: 'sticky',
     top: 0,
     zIndex: 100,
@@ -24,29 +24,6 @@ const styles = {
     border: 'none',
     padding: 0,
   },
-  logoIcon: {
-    width: '40px',
-    height: '40px',
-    background: 'linear-gradient(135deg, #4a7c59, #c9a96e)',
-    borderRadius: '10px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: '20px',
-    color: 'white',
-    fontWeight: 700,
-    fontFamily: '"Poppins", sans-serif',
-  },
-  logoText: {
-    fontSize: '24px',
-    fontWeight: 700,
-    color: '#4a7c59',
-    letterSpacing: '-0.5px',
-    fontFamily: '"Poppins", sans-serif',
-  },
-  logoAccent: {
-    color: '#c9a96e',
-  },
   links: {
     display: 'flex',
     gap: '32px',
@@ -58,7 +35,7 @@ const styles = {
   linkBtn: {
     background: 'none',
     border: 'none',
-    color: '#555',
+    color: '#ffffff',
     fontSize: '15px',
     fontWeight: 500,
     fontFamily: '"Poppins", sans-serif',
@@ -68,9 +45,9 @@ const styles = {
     borderRadius: '8px',
   },
   linkBtnActive: {
-    background: 'rgba(74, 124, 89, 0.1)',
+    background: 'rgba(255,255,255,0.16)',
     border: 'none',
-    color: '#4a7c59',
+    color: '#ffffff',
     fontSize: '15px',
     fontWeight: 700,
     fontFamily: '"Poppins", sans-serif',
@@ -80,8 +57,8 @@ const styles = {
     borderRadius: '8px',
   },
   cartBtn: {
-    background: '#4a7c59',
-    color: 'white',
+    background: '#D4AF37',
+    color: '#222222',
     border: 'none',
     borderRadius: '50%',
     width: '44px',
@@ -98,7 +75,7 @@ const styles = {
     position: 'absolute',
     top: '-4px',
     right: '-4px',
-    background: '#c9a96e',
+    background: '#D4AF37',
     color: '#1a1a1a',
     fontSize: '11px',
     fontWeight: 700,
@@ -138,10 +115,11 @@ export default function Navbar({
         onClick={() => handleNav('home')}
         title="Fraiche Costa Rica"
       >
-        <div style={styles.logoIcon}>F</div>
-        <div style={styles.logoText}>
-          Fra<span style={styles.logoAccent}>i</span>che
-        </div>
+        <img
+          src="https://th.bing.com/th/id/R.da7cf2b590ecf904aa66dc0ac5b8a3cc?rik=XSSa6TItTSXPqg&riu=http%3a%2f%2fmallmegaplaza.com%2fwp-content%2fuploads%2f2020%2f08%2f1_fraiche.png&ehk=Kri3MfWqS7qVXlzpOv4jOtOQEF7ePkgso9Pd6cWOfug%3d&risl=&pid=ImgRaw&r=0"
+          alt="Fraiche"
+          style={{ width: '116px', height: 'auto', display: 'block' }}
+        />
       </button>
 
       <ul style={styles.links}>
@@ -176,11 +154,11 @@ export default function Navbar({
             title="Ver carrito de compras"
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'scale(1.08)'
-              e.currentTarget.style.background = '#3d6b4c'
+              e.currentTarget.style.background = '#b89420'
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'scale(1)'
-              e.currentTarget.style.background = '#4a7c59'
+              e.currentTarget.style.background = '#D4AF37'
             }}
           >
             <FontAwesomeIcon icon={faCartShopping} />

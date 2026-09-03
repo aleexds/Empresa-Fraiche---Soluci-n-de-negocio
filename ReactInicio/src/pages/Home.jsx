@@ -17,19 +17,20 @@ import ProductCard from '../components/ProductCard.jsx'
 import Footer from '../components/Footer.jsx'
 import CartModal from '../components/CartModal.jsx'
 import CheckoutModal from '../components/CheckoutModal.jsx'
+import FeaturedCarousel3D from '../components/FeaturedCarousel3D.jsx'
 import { perfumes } from '../data/perfumes.js'
 
 const styles = {
   container: {
     fontFamily: "'Poppins', sans-serif",
-    background: '#fdfbf7',
+    background: '#FFFFFF',
     minHeight: '100vh',
-    color: '#1a1a1a',
+    color: '#222222',
   },
   // Hero Section
   hero: {
     padding: '90px 24px 80px',
-    background: 'linear-gradient(135deg, #eaf4ec 0%, #faf5ec 100%)',
+    background: '#E8C5C8',
     textAlign: 'center',
     position: 'relative',
     overflow: 'hidden',
@@ -40,7 +41,7 @@ const styles = {
     alignItems: 'center',
     gap: '8px',
     background: '#ffffff',
-    color: '#4a7c59',
+    color: '#5E2B72',
     padding: '8px 18px',
     borderRadius: '30px',
     fontSize: '13px',
@@ -51,14 +52,14 @@ const styles = {
   heroTitle: {
     fontSize: '50px',
     fontWeight: 800,
-    color: '#1a1a1a',
+    color: '#222222',
     margin: '0 auto 16px',
     maxWidth: '850px',
     letterSpacing: '-1.5px',
     lineHeight: 1.15,
   },
   heroAccent: {
-    color: '#4a7c59',
+    color: '#5E2B72',
   },
   heroSub: {
     fontSize: '18px',
@@ -75,7 +76,7 @@ const styles = {
     marginBottom: '48px',
   },
   primaryBtn: {
-    background: '#4a7c59',
+    background: '#5E2B72',
     color: 'white',
     border: 'none',
     borderRadius: '14px',
@@ -92,7 +93,7 @@ const styles = {
   },
   secondaryBtn: {
     background: '#ffffff',
-    color: '#1a1a1a',
+    color: '#222222',
     border: '1px solid #ddd',
     borderRadius: '14px',
     padding: '16px 28px',
@@ -121,7 +122,7 @@ const styles = {
     color: '#444',
   },
   trustIcon: {
-    color: '#4a7c59',
+    color: '#5E2B72',
     fontSize: '18px',
   },
   // Sections General
@@ -137,7 +138,7 @@ const styles = {
   sectionTag: {
     fontSize: '12px',
     fontWeight: 700,
-    color: '#c9a96e',
+    color: '#D4AF37',
     textTransform: 'uppercase',
     letterSpacing: '1.5px',
     marginBottom: '8px',
@@ -174,8 +175,8 @@ const styles = {
     width: '56px',
     height: '56px',
     borderRadius: '14px',
-    background: '#eaf4ec',
-    color: '#4a7c59',
+    background: '#E8C5C8',
+    color: '#5E2B72',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -239,8 +240,8 @@ const styles = {
   },
   categoryBtn: {
     alignSelf: 'flex-start',
-    background: '#c9a96e',
-    color: '#1a1a1a',
+    background: '#D4AF37',
+    color: '#222222',
     border: 'none',
     padding: '8px 16px',
     borderRadius: '20px',
@@ -272,7 +273,7 @@ const styles = {
     justifyContent: 'space-between',
   },
   stars: {
-    color: '#c9a96e',
+    color: '#D4AF37',
     fontSize: '14px',
     marginBottom: '14px',
     display: 'flex',
@@ -294,7 +295,7 @@ const styles = {
     width: '42px',
     height: '42px',
     borderRadius: '50%',
-    background: '#4a7c59',
+    background: '#5E2B72',
     color: 'white',
     display: 'flex',
     alignItems: 'center',
@@ -352,7 +353,7 @@ const styles = {
     outline: 'none',
   },
   clubBtn: {
-    background: '#c9a96e',
+    background: '#D4AF37',
     color: '#1a1a1a',
     border: 'none',
     borderRadius: '12px',
@@ -443,8 +444,8 @@ export default function Home({
           <button
             style={styles.primaryBtn}
             onClick={() => onNavigate('catalogo')}
-            onMouseEnter={(e) => (e.target.style.background = '#3d6b4c')}
-            onMouseLeave={(e) => (e.target.style.background = '#4a7c59')}
+            onMouseEnter={(e) => (e.target.style.background = '#3f1d4d')}
+            onMouseLeave={(e) => (e.target.style.background = '#5E2B72')}
           >
             Explorar Colección <FontAwesomeIcon icon={faArrowRight} />
           </button>
@@ -474,6 +475,8 @@ export default function Home({
           </div>
         </div>
       </section>
+
+      <FeaturedCarousel3D onAddToCart={onAddToCart} />
 
       {/* CATEGORIES SHOWCASE */}
       <section style={styles.section}>
@@ -564,7 +567,7 @@ export default function Home({
       </section>
 
       {/* VALUE PROPOSITION / BENTO */}
-      <section style={{ ...styles.section, background: '#faf7f2', borderRadius: '30px', margin: '40px auto' }}>
+      <section style={{ ...styles.section, background: '#E8C5C8', borderRadius: '4px', margin: '40px auto' }}>
         <div style={styles.sectionHeader}>
           <span style={styles.sectionTag}>Calidad & Garantía</span>
           <h2 style={styles.sectionTitle}>¿Por qué elegir Fraiche Costa Rica?</h2>
@@ -738,7 +741,7 @@ export default function Home({
         <div style={styles.faqGrid}>
           <div style={styles.faqCard}>
             <h4 style={styles.faqQuestion}>
-              <FontAwesomeIcon icon={faCircleQuestion} style={{ color: '#4a7c59' }} />
+              <FontAwesomeIcon icon={faCircleQuestion} style={{ color: '#5E2B72' }} />
               ¿Hacen envíos fuera de Costa Rica?
             </h4>
             <p style={styles.faqAnswer}>
@@ -748,7 +751,7 @@ export default function Home({
 
           <div style={styles.faqCard}>
             <h4 style={styles.faqQuestion}>
-              <FontAwesomeIcon icon={faCircleQuestion} style={{ color: '#4a7c59' }} />
+              <FontAwesomeIcon icon={faCircleQuestion} style={{ color: '#5E2B72' }} />
               ¿Cómo funciona el pago con SINPE Móvil?
             </h4>
             <p style={styles.faqAnswer}>
@@ -758,7 +761,7 @@ export default function Home({
 
           <div style={styles.faqCard}>
             <h4 style={styles.faqQuestion}>
-              <FontAwesomeIcon icon={faCircleQuestion} style={{ color: '#4a7c59' }} />
+              <FontAwesomeIcon icon={faCircleQuestion} style={{ color: '#5E2B72' }} />
               ¿Cuánto tiempo tarda la entrega?
             </h4>
             <p style={styles.faqAnswer}>
@@ -768,7 +771,7 @@ export default function Home({
 
           <div style={styles.faqCard}>
             <h4 style={styles.faqQuestion}>
-              <FontAwesomeIcon icon={faCircleQuestion} style={{ color: '#4a7c59' }} />
+              <FontAwesomeIcon icon={faCircleQuestion} style={{ color: '#5E2B72' }} />
               ¿Puedo pagar contra entrega?
             </h4>
             <p style={styles.faqAnswer}>
@@ -799,7 +802,7 @@ export default function Home({
             </button>
           </form>
           {subSuccess && (
-            <div style={{ marginTop: '16px', color: '#c9a96e', fontWeight: 600 }}>
+            <div style={{ marginTop: '16px', color: '#D4AF37', fontWeight: 600 }}>
               <FontAwesomeIcon icon={faCheck} /> ¡Gracias por suscribirte! Te hemos enviado tu cupón.
             </div>
           )}
