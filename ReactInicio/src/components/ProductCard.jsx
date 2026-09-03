@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 const styles = {
   card: {
     background: 'white',
@@ -20,6 +22,7 @@ const styles = {
     fontFamily: "'Poppins', sans-serif",
     letterSpacing: '0.3px',
     textTransform: 'uppercase',
+    zIndex: 2,
   },
   img: {
     width: '100%',
@@ -86,9 +89,42 @@ const styles = {
     fontFamily: '"Poppins", sans-serif',
     transition: 'all 0.2s',
   },
+  btnAdded: {
+    background: '#2e563b',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '12px',
+    padding: '12px 20px',
+    fontSize: '14px',
+    fontWeight: 600,
+    cursor: 'pointer',
+    fontFamily: '"Poppins", sans-serif',
+    transition: 'all 0.2s',
+  },
 }
 
-export default function ProductCard({ nombre, precio, descripcion, imagen, badge, categoria }) {
+export default function ProductCard({
+  id,
+  nombre,
+  precio,
+  descripcion,
+  imagen,
+  badge,
+  categoria,
+  onAddToCart,
+}) {
+  const [justAdded, setJustAdded] = useState(false)
+
+  const handleAdd = () => {
+    if (onAddToCart) {
+      onAddToCart({ id, nombre, precio, descripcion, imagen, badge, categoria })
+    }
+    setJustAdded(true)
+    setTimeout(() => {
+      setJustAdded(false)
+    }, 1200)
+  }
+
   return (
     <div
       style={styles.card}
@@ -107,7 +143,9 @@ export default function ProductCard({ nombre, precio, descripcion, imagen, badge
         alt={nombre}
         style={styles.img}
         onError={(e) => {
-          e.target.src = `https://placehold.co/400x280/f5f0e8/4a7c59?text=${encodeURIComponent(nombre)}`
+          e.target.src = `https://placehold.co/400x280/f5f0e8/4a7c59?text=${encodeURIComponent(
+            nombre
+          )}`
         }}
       />
       <div style={styles.body}>
@@ -120,20 +158,26 @@ export default function ProductCard({ nombre, precio, descripcion, imagen, badge
             <div style={styles.priceLabel}>Precio en colones</div>
           </div>
           <button
-            style={styles.btn}
+            style={justAdded ? styles.btnAdded : styles.btn}
+            onClick={handleAdd}
             onMouseEnter={(e) => {
-              e.target.style.background = '#3d6b4c'
-              e.target.style.transform = 'scale(1.05)'
+              if (!justAdded) {
+                e.target.style.background = '#3d6b4c'
+                e.target.style.transform = 'scale(1.05)'
+              }
             }}
             onMouseLeave={(e) => {
-              e.target.style.background = '#4a7c59'
-              e.target.style.transform = 'scale(1)'
+              if (!justAdded) {
+                e.target.style.background = '#4a7c59'
+                e.target.style.transform = 'scale(1)'
+              }
             }}
           >
-            Agregar
+            {justAdded ? '✓ Agregado' : 'Agregar'}
           </button>
         </div>
       </div>
     </div>
   )
 }
+
