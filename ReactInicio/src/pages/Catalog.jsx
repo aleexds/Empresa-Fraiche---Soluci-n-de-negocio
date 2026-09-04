@@ -151,12 +151,17 @@ export default function Catalog({
   const [isCartOpen, setIsCartOpen] = useState(false)
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false)
 
-  const categories = ['Todos', 'Fragancia femenina', 'Fragancia masculina', 'Unisex']
+  const categories = [
+    'Todos',
+    'Fragancia femenina',
+    'Fragancia masculina',
+    'Unisex',
+  ]
 
   const filteredPerfumes = useMemo(() => {
     return perfumes.filter((p) => {
       const matchesCategory =
-        selectedCategory === 'Todos' || p.categoria === selectedCategory
+        selectedCategory === 'Todos' || p.category === selectedCategory
       const matchesSearch =
         p.nombre.toLowerCase().includes(searchQuery.toLowerCase()) ||
         p.descripcion.toLowerCase().includes(searchQuery.toLowerCase())
