@@ -6,7 +6,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '14px clamp(18px, 5vw, 64px)',
+    padding: '10px clamp(18px, 5vw, 64px)',
     background: '#5E2B72',
     backdropFilter: 'blur(12px)',
     borderBottom: '1px solid rgba(255,255,255,0.18)',

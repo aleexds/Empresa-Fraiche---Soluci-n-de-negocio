@@ -323,6 +323,9 @@ export default function CartModal({
                 <div style={styles.itemInfo}>
                   <span style={styles.itemCategory}>{item.categoria}</span>
                   <div style={styles.itemName}>{item.nombre}</div>
+                  <div style={styles.itemCategory}>
+                    {item.size} ml · Concentración {item.concentration}
+                  </div>
                   <div style={styles.itemPrice}>
                     ₡{(item.precio * item.quantity).toLocaleString('es-CR')}
                   </div>

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { perfumePricing } from '../data/perfumes.js'
 
 const styles = {
   card: {
@@ -70,12 +71,69 @@ const styles = {
   price: {
     fontSize: '24px',
     fontWeight: 700,
-    color: '#5E2B72',
+    color: '#D4AF37',
     fontFamily: "'Poppins', sans-serif",
   },
   priceLabel: {
     fontSize: '11px',
     color: '#aaa',
+    fontFamily: "'Poppins', sans-serif",
+  },
+  optionGroup: {
+    marginBottom: '14px',
+  },
+  optionLabel: {
+    display: 'block',
+    fontSize: '11px',
+    fontWeight: 700,
+    color: '#555',
+    marginBottom: '7px',
+    textTransform: 'uppercase',
+    letterSpacing: '0.7px',
+    fontFamily: "'Poppins', sans-serif",
+  },
+  pills: {
+    display: 'flex',
+    gap: '6px',
+    flexWrap: 'wrap',
+  },
+  pill: {
+    background: '#f7f5ef',
+    border: '1px solid #e5e0d4',
+    borderRadius: '999px',
+    padding: '6px 11px',
+    color: '#555',
+    fontSize: '12px',
+    cursor: 'pointer',
+    fontFamily: "'Poppins', sans-serif",
+  },
+  activePill: {
+    background: '#D4AF37',
+    borderColor: '#D4AF37',
+    color: '#222',
+    fontWeight: 700,
+  },
+  select: {
+    width: '100%',
+    background: '#f7f5ef',
+    border: '1px solid #e5e0d4',
+    borderRadius: '8px',
+    padding: '8px 10px',
+    color: '#444',
+    fontSize: '12px',
+    fontFamily: "'Poppins', sans-serif",
+  },
+  premiumBadge: {
+    display: 'inline-block',
+    background: '#D4AF37',
+    color: '#222',
+    borderRadius: '999px',
+    padding: '4px 9px',
+    marginBottom: '10px',
+    fontSize: '10px',
+    fontWeight: 700,
+    textTransform: 'uppercase',
+    letterSpacing: '0.4px',
     fontFamily: "'Poppins', sans-serif",
   },
   btn: {
@@ -107,18 +165,38 @@ const styles = {
 export default function ProductCard({
   id,
   nombre,
-  precio,
   descripcion,
   imagen,
   badge,
   categoria,
+  isPremium = false,
   onAddToCart,
 }) {
   const [justAdded, setJustAdded] = useState(false)
+  const [size, setSize] = useState(100)
+  const [concentration, setConcentration] = useState('clasica')
+
+  const line = isPremium ? 'premium' : 'regular'
+  const basePrice = perfumePricing[line][size]
+  const concentrationOption = perfumePricing.concentrations[concentration]
+  const finalPrice = basePrice + concentrationOption.extra
 
   const handleAdd = () => {
+    const variantId = `${id}-${size}-${concentration}`
     if (onAddToCart) {
-      onAddToCart({ id, nombre, precio, descripcion, imagen, badge, categoria })
+      onAddToCart({
+        id: variantId,
+        productId: id,
+        nombre,
+        precio: finalPrice,
+        descripcion,
+        imagen,
+        badge,
+        categoria,
+        size,
+        concentration: concentrationOption.label,
+        essence: concentrationOption.essence,
+      })
     }
     setJustAdded(true)
     setTimeout(() => {
@@ -150,13 +228,49 @@ export default function ProductCard({
         }}
       />
       <div style={styles.body}>
+        {isPremium && <div style={styles.premiumBadge}>Línea Concentrada</div>}
         {categoria && <div style={styles.category}>{categoria}</div>}
         <div style={styles.name}>{nombre}</div>
         <div style={styles.desc}>{descripcion}</div>
+        <div style={styles.optionGroup}>
+          <span style={styles.optionLabel}>Tamaño</span>
+          <div style={styles.pills}>
+            {[60, 100].map((optionSize) => (
+              <button
+                key={optionSize}
+                type="button"
+                style={{
+                  ...styles.pill,
+                  ...(size === optionSize ? styles.activePill : {}),
+                }}
+                onClick={() => setSize(optionSize)}
+              >
+                {optionSize} ml
+              </button>
+            ))}
+          </div>
+        </div>
+        <div style={styles.optionGroup}>
+          <label style={styles.optionLabel} htmlFor={`concentration-${id}`}>
+            Fijación
+          </label>
+          <select
+            id={`concentration-${id}`}
+            value={concentration}
+            style={styles.select}
+            onChange={(e) => setConcentration(e.target.value)}
+          >
+            {Object.entries(perfumePricing.concentrations).map(([key, option]) => (
+              <option key={key} value={key}>
+                {option.label}: {option.essence} (+₡{option.extra.toLocaleString('es-CR')})
+              </option>
+            ))}
+          </select>
+        </div>
         <div style={styles.footer}>
           <div style={styles.priceWrap}>
-            <div style={styles.price}>₡{precio.toLocaleString('es-CR')}</div>
-            <div style={styles.priceLabel}>Precio en colones</div>
+            <div style={styles.price}>₡{finalPrice.toLocaleString('es-CR')}</div>
+            <div style={styles.priceLabel}>{size} ml · {concentrationOption.label}</div>
           </div>
           <button
             style={justAdded ? styles.btnAdded : styles.btn}

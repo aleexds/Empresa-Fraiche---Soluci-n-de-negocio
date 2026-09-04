@@ -1,3 +1,24 @@
+export const perfumePricing = {
+  regular: { 60: 8500, 100: 12500 },
+  premium: { 60: 11500, 100: 16500 },
+  concentrations: {
+    clasica: { label: 'Clásica', essence: '70% Esencia / 30% Alcohol', extra: 0 },
+    intensa: { label: 'Intensa', essence: '80% Esencia / 20% Alcohol', extra: 1500 },
+    extrema: { label: 'Extrema', essence: '90% Esencia / 10% Alcohol', extra: 2500 },
+  },
+}
+
+const premiumBrands = [
+  'Louis Vuitton',
+  'Tom Ford',
+  'Le Labo',
+  'Xerjoff',
+  'Maison Francis Kurkdjian',
+  'Creed',
+  'Byredo',
+  'By Kilian',
+]
+
 export const perfumes = [
   { id: 1, nombre: '1 Million Paco Rabanne', imagen: 'https://www.myperfumeshop.com.au/cdn/shop/files/1_Million_Eau_de_Toilette_Spray_PACO_RABANNE_SEPHORA_-_105.jpg?v=1684952734&width=1500' , categoria: 'Fragancia masculina' },
   { id: 2, nombre: '1 Million Lucky', imagen: 'https://arabia.com.co/cdn/shop/files/image_qVz.png?v=1694803017' , categoria: 'Fragancia masculina' },
@@ -76,6 +97,9 @@ export const perfumes = [
   { id: 75, name: "Dior Homme Intense", brand: "Dior", category: "Fragancia masculina", image: "https://th.bing.com/th/id/R.82d2223b12e9fc49cf58226073ef11e0?rik=qmHm3vUCAQi9Zw&riu=http%3a%2f%2fkosmenia.ma%2fcdn%2fshop%2ffiles%2fdior_homme_eau_de_parfum_intense_n_1200x1200.jpg%3fv%3d1710947007&ehk=1S2BNQDQrSUqeFakMl5QjCd96a%2bKzMO3NwffbMkeK0c%3d&risl=&pid=ImgRaw&r=0" },
 ].map((perfume, index) => {
   const category = perfume.category || perfume.categoria
+  const isPremium = premiumBrands.some((brand) =>
+    `${perfume.brand || ''} ${perfume.nombre || perfume.name}`.includes(brand)
+  )
 
   return {
     ...perfume,
@@ -83,7 +107,9 @@ export const perfumes = [
   imagen: perfume.imagen || perfume.image,
     categoria: category,
     category,
-  precio: 45000 + (index % 7) * 2500,
+    isPremium,
+    price: perfumePricing[isPremium ? 'premium' : 'regular'][100],
+    precio: perfumePricing[isPremium ? 'premium' : 'regular'][100],
   descripcion: 'Fragancia de autor con una estela elegante y de alta fijación.',
   badge: index < 3 ? 'Destacado' : index === 27 ? 'Nicho' : '',
   destacado: index < 6,

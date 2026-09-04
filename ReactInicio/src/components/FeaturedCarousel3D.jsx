@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft, faArrowRight, faCartPlus } from '@fortawesome/free-solid-svg-icons'
-import { perfumes } from '../data/perfumes.js'
+import { perfumes, perfumePricing } from '../data/perfumes.js'
 import './FeaturedCarousel3D.css'
 
 const featured = perfumes.slice(0, 8)
@@ -18,6 +18,19 @@ export default function FeaturedCarousel3D({ onAddToCart }) {
 
   const move = (step) => {
     setActiveIndex((current) => (current + step + featured.length) % featured.length)
+  }
+
+  const addDefaultVariant = (perfume) => {
+    const line = perfume.isPremium ? 'premium' : 'regular'
+    onAddToCart?.({
+      ...perfume,
+      id: `${perfume.id}-100-clasica`,
+      productId: perfume.id,
+      precio: perfumePricing[line][100],
+      size: 100,
+      concentration: perfumePricing.concentrations.clasica.label,
+      essence: perfumePricing.concentrations.clasica.essence,
+    })
   }
 
   return (
@@ -55,7 +68,7 @@ export default function FeaturedCarousel3D({ onAddToCart }) {
                 <div className="fraiche-3d__caption">
                   <span>{perfume.categoria}</span>
                   <strong>{perfume.nombre}</strong>
-                  <button type="button" onClick={() => onAddToCart?.(perfume)}>
+                  <button type="button" onClick={() => addDefaultVariant(perfume)}>
                     <FontAwesomeIcon icon={faCartPlus} /> Agregar
                   </button>
                 </div>

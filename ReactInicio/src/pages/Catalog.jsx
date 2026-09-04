@@ -244,7 +244,7 @@ export default function Catalog({
                 key={p.id}
                 id={p.id}
                 nombre={p.nombre}
-                precio={p.precio}
+                isPremium={p.isPremium}
                 descripcion={p.descripcion}
                 imagen={p.imagen}
                 badge={p.badge}
